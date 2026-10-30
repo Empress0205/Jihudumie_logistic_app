@@ -21,9 +21,13 @@ Each has its own README covering how to run it and the decisions behind it.
 ```bash
 # API — Postgres in Docker, then migrate and serve on :8000
 cd backend
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env
 docker compose up -d
-.venv/Scripts/python manage.py migrate
-.venv/Scripts/python manage.py runserver
+python manage.py migrate
+python manage.py runserver
 
 # App — in a second terminal
 cd mobile
@@ -37,7 +41,7 @@ credentials.
 ## Tests
 
 ```bash
-cd backend && .venv/Scripts/python manage.py test   # 96
+cd backend && python manage.py test   # 96 (with .venv activated)
 cd mobile  && flutter test                          # 103 (+1 skipped)
 ```
 

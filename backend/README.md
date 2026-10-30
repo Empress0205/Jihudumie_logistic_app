@@ -10,10 +10,14 @@ API for address search.
 ## Running
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate                 # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env
 docker compose up -d                      # Postgres 16 on :5432
-.venv/Scripts/python manage.py migrate
-.venv/Scripts/python manage.py runserver
-.venv/Scripts/python manage.py test       # 96 tests
+python manage.py migrate
+python manage.py runserver
+python manage.py test                     # 96 tests
 ```
 
 Interactive contract at `/api/docs`, machine-readable at `/api/schema`
